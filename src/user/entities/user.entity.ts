@@ -1,4 +1,5 @@
-import { Entity, Column, PrimaryGeneratedColumn, Unique } from 'typeorm';
+import { Post } from 'src/post/entities/post.entity';
+import { Entity, Column, PrimaryGeneratedColumn, Unique, OneToMany } from 'typeorm';
 
 @Entity()
 @Unique(['email'])
@@ -18,4 +19,7 @@ export class User {
 
   @Column({ unique: true })
   userCode: string;
+
+  @OneToMany(() => Post, (post) => post.user)
+  posts: Post[];
 }

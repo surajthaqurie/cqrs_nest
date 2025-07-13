@@ -10,10 +10,12 @@ import { UpdateUserHandler } from './cqrs/handlers/update-user.handler';
 import { DeleteUserHandler } from './cqrs/handlers/delete-user.handler';
 import { GetUserHandler } from './cqrs/handlers/get-user.handler';
 import { ListUsersHandler } from './cqrs/handlers/list-users.handler';
+import { UserService } from './user.service';
 
 @Module({
   imports: [TypeOrmModule.forFeature([User]), CqrsModule],
   controllers: [UserController],
-  providers: [CreateUserHandler, UpdateUserHandler, DeleteUserHandler, GetUserHandler, ListUsersHandler],
+  providers: [CreateUserHandler, UpdateUserHandler, DeleteUserHandler, GetUserHandler, ListUsersHandler, UserService],
+  exports: [UserService],
 })
 export class UserModule {}
